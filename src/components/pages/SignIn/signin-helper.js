@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core';
+import { v4 as uuidv4 } from 'uuid';
 
 export const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,4 +36,4 @@ export const signInFields = [
     id: 'password',
     autoComplete: 'current-password',
   },
-];
+].map(signInField => ({ ...signInField, key: uuidv4() }));

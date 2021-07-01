@@ -1,6 +1,5 @@
 import React from 'react';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { v4 as uuidv4 } from 'uuid';
 import {
   Container,
   Typography,
@@ -37,7 +36,6 @@ function SignIn({ classes, onChange, onClick, signInFields }) {
                 onChange={onChange}
                 required
                 fullWidth
-                key={uuidv4()}
               />
             ))}
             <Button

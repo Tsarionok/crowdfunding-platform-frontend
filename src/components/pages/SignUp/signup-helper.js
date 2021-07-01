@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, Typography, Link } from '@material-ui/core';
+import { v4 as uuidv4 } from 'uuid';
 
 export const useStyles = makeStyles((theme) => ({
   paper: {
@@ -69,4 +70,4 @@ export const signUpFields = [
     name: 'passwordConfirm',
     autoComplete: 'current-password',
   },
-];
+].map(signUpField => ({ ...signUpField, key: uuidv4() }));;
