@@ -1,0 +1,27 @@
+.ProfilePage__MainInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+
+  & > * {
+    margin-bottom: 10px;
+  }
+
+  .ProfilePage__Avatar {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+.ProfilePage__Form{
+  margin: 10px 0;
+}
+
+.ProfilePage__InputWrapper {
+  margin-bottom: 7px;
+  width: 100%;
+}
+.ProfilePage__Input {
+  width: 100%;
+}
