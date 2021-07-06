@@ -28,7 +28,7 @@ function SignUp({ classes, onChange, onSubmit }) {
         <div className={classes.form}>
           <Grid container spacing={3}>
             {signUpFields.map((field) => (
-              <Grid item xs={12} sm={field.sm ? field.sm : 12}>
+              <Grid item xs={12} sm={field.sm ? field.sm : 12} key={field.key}>
                 <TextField
                   {...field}
                   variant="outlined"

@@ -17,7 +17,16 @@ function SignUpContainer() {
     passwordConfirm: '',
   });
 
-  const onSubmit = React.useCallback((e) => {},[]);
+  const onSubmit = React.useCallback(() => { 
+    setRegistrationData(() => ({
+      firstName: '',
+      lastName: '',
+      password: '',
+      email: '',
+      passwordConfirm: '',
+    }))
+    console.log(registrationData);
+  },[registrationData]);
 
   const onChange = React.useCallback(
     (e) => {

@@ -22,7 +22,7 @@ function HeaderPresentational({
             <Link to="#" className="menu-bars">
               <FaBars onClick={toggleDrawer} />
             </Link>
-            <div className="header__logo">Crowdfunding</div>
+            <div className="header__logo">Crowdfounding</div>
           </div>
         </div>
         <nav className={isActive ? 'nav-menu active' : 'nav-menu'}>

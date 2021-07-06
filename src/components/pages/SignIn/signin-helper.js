@@ -27,13 +27,13 @@ export const signInFields = [
     label: 'Email Address',
     type: 'email',
     name: 'email',
-    autoComplete: 'email',
+    autoComplete: 'email'
   },
   {
     name: 'password',
     label: 'Password',
     type: 'password',
     id: 'password',
-    autoComplete: 'current-password',
+    autoComplete: 'current-password'
   },
 ].map(signInField => ({ ...signInField, key: uuidv4() }));

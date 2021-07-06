@@ -1,5 +1,5 @@
 import React from 'react';
-import { AiFillHome, AiOutlineForm } from 'react-icons/ai';
+import { AiFillHome, AiOutlineForm, AiFillProject } from 'react-icons/ai';
 import { GoSignIn, GoSignOut } from 'react-icons/go';
 
 export const DrawerData = [
@@ -13,6 +13,24 @@ export const DrawerData = [
     path: '/sign-in',
     icon: <GoSignIn />,
     logged: false,
+  },
+  {
+    title: 'Profile',
+    path: '/profiles/me',
+    icon: <AiFillProject />,
+    logged: false
+  },
+  {
+    title: 'Projects',
+    path: '/projects',
+    icon: <AiFillProject />,
+    logged: false
+  },
+  {
+    title: 'Create Project',
+    path: '/create-project',
+    icon: <AiFillProject />,
+    logged: false
   },
   {
     title: 'Sign Up',

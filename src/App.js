@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import * as Pages from './components/pages';
 import { Header } from './components';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 function App() {
@@ -27,4 +28,3 @@ function App() {
 }
 
 export default App;
-

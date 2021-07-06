@@ -20,3 +20,9 @@ h3 {
   margin-top: 0;
   padding-top: 80px;
 }
+
+.Center-Block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
