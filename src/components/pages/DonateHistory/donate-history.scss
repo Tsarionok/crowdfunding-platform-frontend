@@ -1,0 +1,34 @@
+.DonateHistoryPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+
+  & > div {
+    margin-bottom: 15px;
+  } 
+  & > *:first-child {
+    margin-top: 10px;
+  } 
+}
+
+.DonateHistoryPage__Card {
+  border: 1px solid gray;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.DonateHistoryPage__CardHeadingRow {
+  position: relative;
+}
+
+.DonateHistoryPage__CardMainInfo {
+  padding: 20px 50px 30px 50px;
+}
+
+.DonateHistoryPage__CloseButton {
+  position: absolute;
+  right: 3px;
+  top: 0;
+  color: red;
+}

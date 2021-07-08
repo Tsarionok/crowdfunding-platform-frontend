@@ -7,8 +7,13 @@ const SingleProjectPage = {
 }
 
 function SingleProjectContainer() {
+  const [state, setState] = React.useState({ progressValue: 10, rating: 1 });
+
+  const handleRatingChange = React.useCallback(() => {
+  }, []);
+
   return (
-    <SingleProject />
+    <SingleProject {...state} handleRatingChange={handleRatingChange} />
   )
 }
 

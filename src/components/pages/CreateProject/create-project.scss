@@ -1,0 +1,20 @@
+.CreateProjectPage {
+  & > * {
+    margin-bottom: 15px;
+
+    &:first-child {
+      margin-top: 10px;
+    }
+  }
+}
+
+.CreateProjectPage__DatePickerAndTotalSum {
+  display: flex;
+  & > div:first-child {
+    margin-right: 10px;
+  }
+}
+
+.CreateProject__ProjectNameInput {
+  margin-right: 10px;
+}

@@ -1,0 +1,38 @@
+.tab {
+  display: flex;
+  font-family: Roboto;
+  font-size: 14px;
+  list-style: none;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  background-color: #f8f8f8;
+}
+
+.tab__element, .tab__element_active {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 8px 30px 9px 15px;
+  line-height: 16px;
+  color: #555;
+  width: 100%;
+  border: 1px solid #ededed;
+
+  .tab__link {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #555;
+  }
+
+  &:first-child {
+    border-right: none;
+  }
+  &:last-child {
+    border-left: none;
+  }
+}
+
+.tab__element_active {
+  background-color: honeydew;
+}

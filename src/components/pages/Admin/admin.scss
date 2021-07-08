@@ -1,0 +1,17 @@
+.admin-page__row-item {
+  display: flex !important;
+  justify-content: space-between;
+}
+.admin-page__add-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  & > * {
+    margin-right: 10px;
+  }
+}
+
+.admin-page__container {
+  display: flex;
+}

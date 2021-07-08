@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-elastic-carousel';
+import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import './slider.scss';
@@ -20,7 +21,7 @@ function Slider({ photoLinks }) {
       <Carousel className="project-images">
         {
           photoLinks.map((link, index) => (
-            <Item>
+            <Item key={uuidv4()}>
               <img
                 style={{ height: '100%' }}
                 src={link}

@@ -37,20 +37,6 @@ export const Copyright = () => {
 
 export const signUpFields = [
   {
-    sm: 6,
-    id: 'firstName',
-    label: 'First Name',
-    name: 'firstName',
-    autoComplete: 'fname',
-  },
-  {
-    sm: 6,
-    id: 'lastName',
-    label: 'Last Name',
-    name: 'lastName',
-    autoComplete: 'lname',
-  },
-  {
     id: 'email',
     label: 'Email Address',
     name: 'email',

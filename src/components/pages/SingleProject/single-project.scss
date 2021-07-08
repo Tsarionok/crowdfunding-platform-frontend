@@ -1,0 +1,43 @@
+.SingleProjectPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+
+  & > div {
+    margin-bottom: 15px;
+  }
+}
+
+.SingleProject__Rating {
+  margin-left: 0;
+}
+
+.SingleProject__RatingWrapper {
+  display: flex;
+
+  & > div:not(:last-child) {
+    margin-right: 25px;
+  }
+  * > button {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.single-project-page__add-btn {
+  height: 30px;
+}
+
+.single-project-page__date-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-project-page__progress-wrapper {
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 14px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}

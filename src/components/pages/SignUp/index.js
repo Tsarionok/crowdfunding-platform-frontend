@@ -1,4 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  useHistory
+} from "react-router-dom";
+import { register } from '../../../redux/actions';
 import { useStyles } from './signup-helper';
 import SignUp from './SignUp';
 
@@ -9,24 +14,24 @@ const SignUpPage = {
 
 function SignUpContainer() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [registrationData, setRegistrationData] = React.useState({
-    firstName: '',
-    lastName: '',
     password: '',
     email: '',
     passwordConfirm: '',
   });
 
   const onSubmit = React.useCallback(() => { 
+    dispatch(register({ ...registrationData, history }));
+
     setRegistrationData(() => ({
-      firstName: '',
-      lastName: '',
-      password: '',
       email: '',
+      password: '',
       passwordConfirm: '',
-    }))
-    console.log(registrationData);
-  },[registrationData]);
+    }));
+  },[dispatch, history, registrationData]);
 
   const onChange = React.useCallback(
     (e) => {

@@ -7,7 +7,14 @@ const CreateProjectPage = {
 }
 
 function CreateProjectContainer() {
-  return <CreateProject />
+  const [state, setState] = React.useState({ startDate: new Date(), endDate: '' }) 
+
+
+  const onChangeDate = React.useCallback((date) => {
+    setState(previousState => ({ ...previousState, endDate: date }));
+  }, []);
+
+  return <CreateProject {...state} onChangeDate={onChangeDate} />
 }
 
 export default CreateProjectPage;

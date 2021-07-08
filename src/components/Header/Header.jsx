@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
@@ -64,4 +64,4 @@ HeaderPresentational.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export default React.memo(withRouter(HeaderPresentational));
+export default HeaderPresentational;

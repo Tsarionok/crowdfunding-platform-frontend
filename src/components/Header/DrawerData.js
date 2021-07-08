@@ -9,8 +9,8 @@ export const DrawerData = [
     icon: <AiFillHome />,
   },
   {
-    title: 'Sign In',
-    path: '/sign-in',
+    title: 'Admin Panel',
+    path: '/admin-panel',
     icon: <GoSignIn />,
     logged: false,
   },
@@ -31,6 +31,12 @@ export const DrawerData = [
     path: '/create-project',
     icon: <AiFillProject />,
     logged: false
+  },
+  {
+    title: 'Sign In',
+    path: '/sign-in',
+    icon: <GoSignIn />,
+    logged: false,
   },
   {
     title: 'Sign Up',
