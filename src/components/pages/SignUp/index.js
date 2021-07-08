@@ -1,7 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  useHistory
+  useHistory,
+  Redirect
 } from "react-router-dom";
 import { register } from '../../../redux/actions';
 import { useStyles } from './signup-helper';
@@ -17,6 +18,8 @@ function SignUpContainer() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const { auth } = useSelector(state => state)
+
   const [registrationData, setRegistrationData] = React.useState({
     password: '',
     email: '',
@@ -24,9 +27,9 @@ function SignUpContainer() {
   });
 
   const onSubmit = React.useCallback(() => { 
-    dispatch(register({ ...registrationData, history }));
+   dispatch(register({ ...registrationData, history }));
 
-    setRegistrationData(() => ({
+   setRegistrationData(() => ({
       email: '',
       password: '',
       passwordConfirm: '',
@@ -35,19 +38,24 @@ function SignUpContainer() {
 
   const onChange = React.useCallback(
     (e) => {
-      setRegistrationData({
-        ...registrationData,
+      setRegistrationData(previousState => ({
+        ...previousState,
         [e.target.name]: e.target.value,
-      });
+      }));
     },
-    [registrationData],
+    [],
   );
+
+  if (auth.isAuthenticated && auth.user) {
+    return <Redirect to={`/profiles/${auth.user.id}`} />;
+  }
 
   return (
     <SignUp
       classes={classes}
       onChange={onChange}
       onSubmit={onSubmit}
+      inputValues={registrationData}
     />
   );
 }

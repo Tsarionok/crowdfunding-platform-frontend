@@ -16,7 +16,7 @@ export const loadUser = (id) => async (dispatch) => {
       setAuthToken(localStorage.token);
     }
     try {
-      const res = await axios.get(`api/Users/${id}`);
+      const res = await axios.get(`https://localhost:44334/api/Users/${id}`);
       dispatch({ type: USER_LOADED, payload: res.data });
     } catch (err) {
       const errors = err.response.data.errors;
@@ -34,6 +34,7 @@ export const loadUser = (id) => async (dispatch) => {
     } catch (err) {
       const errors = err && err.response && err.response.data && err.response.data.errors;
       if (errors) {
+        console.log(errors);
         dispatch(addErrors(errors));
       }
       dispatch({ 
@@ -48,7 +49,7 @@ export const loadUser = (id) => async (dispatch) => {
       const res = await axios.post('https://localhost:44334/api/Users/login', body, configContentType());
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data,
+        payload: { ...res.data, token: `Bearer ${res.data.token}` },
       }); 
       dispatch(loadUser(res.data.id));
     } catch (err) {

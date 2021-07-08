@@ -14,7 +14,7 @@ import {
 import PropTypes from 'prop-types';
 import { Copyright, signUpFields } from './signup-helper';
 
-function SignUp({ classes, onChange, onSubmit }) {
+function SignUp({ classes, inputValues, onChange, onSubmit }) {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -35,6 +35,7 @@ function SignUp({ classes, onChange, onSubmit }) {
                   required
                   fullWidth
                   autoFocus
+                  value={inputValues[field.name] || ''}
                   onChange={onChange}
                 />
               </Grid>

@@ -1,5 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  Redirect
+} from "react-router-dom";
 import { useStyles, signInFields } from './signin-helper';
 import { login } from '../../../redux/actions';
 import SignIn from './SignIn';
@@ -13,6 +16,7 @@ const SignInPage = {
 function SignInContainer() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { auth } = useSelector(state => state)
 
   const [loginData, setLoginData] = React.useState({
     password: '',
@@ -21,6 +25,11 @@ function SignInContainer() {
 
   const onClick = React.useCallback(() => {
     dispatch(login(loginData));
+
+    setLoginData({ 
+      password: '',
+      email: '' 
+    })
   }, [dispatch, loginData]);
 
   const onChange = React.useCallback(
@@ -33,12 +42,17 @@ function SignInContainer() {
     [],
   );
 
+  if (auth.isAuthenticated && auth.user) {
+    return <Redirect to={`/profiles/${auth.user.id}`} />;
+  }
+
   return (
     <SignIn
       classes={classes}
       onChange={onChange}
       onClick={onClick}
       signInFields={signInFields}
+      inputValuesObj={loginData}
     />
   );
 }

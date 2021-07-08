@@ -18,7 +18,7 @@ export const addErrorAndDelete = (error, timeout = 1000) => (dispatch) => {
 };
 
 export const addErrors = (errors) => (dispatch) => {
-  const newErrors = errors.reduce((p, c) => [...p, { ...c, id: uuidv4() }], []);
+  const newErrors = errors && errors.reduce((p, c) => [...p, { ...c, id: uuidv4() }], []);
   dispatch({ type: ADD_ERRORS, payload: newErrors });
 };
 

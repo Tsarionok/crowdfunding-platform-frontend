@@ -14,7 +14,7 @@ import {
 import PropTypes from 'prop-types';
 import { Copyright } from '../SignUp/signup-helper';
 
-function SignIn({ classes, onChange, onClick, signInFields }) {
+function SignIn({ classes, onChange, onClick, signInFields, inputValuesObj }) {
   return (
     <div>
       <Container component="main" maxWidth="xs">
@@ -34,6 +34,7 @@ function SignIn({ classes, onChange, onClick, signInFields }) {
                 margin="normal"
                 autoFocus
                 onChange={onChange}
+                value={inputValuesObj[field.name] || ''}
                 required
                 fullWidth
               />
