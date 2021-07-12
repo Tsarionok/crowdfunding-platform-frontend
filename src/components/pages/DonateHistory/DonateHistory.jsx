@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import './donate-history.scss';
 
 function DonateHistory({ donations }) {
-  console.log(donations)
-
   return (
     <div className="DonateHistoryPage">
       <h3>Donation History</h3>

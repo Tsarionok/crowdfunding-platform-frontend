@@ -8,7 +8,9 @@ const ProjectsPage = {
 
 function ProjectsContainer() {
   return (
-    <Projects />
+    <Projects cardsRows={[{}, {}, {}, {}, {}].reduce((p, c, i) => {
+      return i % 3 ? [...p.slice(0, -1), [...p[p.length - 1], c]] : [...p, [c]];
+    }, [])}/>
   )
 }
 

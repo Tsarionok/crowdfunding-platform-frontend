@@ -12,25 +12,25 @@ export const DrawerData = [
     title: 'Admin Panel',
     path: '/admin-panel',
     icon: <GoSignIn />,
-    logged: false,
+    logged: true,
+    forAdminAndEditor: true
   },
   {
     title: 'Profile',
     path: '/profiles/me',
     icon: <AiFillProject />,
-    logged: false
+    logged: true
   },
   {
     title: 'Projects',
     path: '/projects',
-    icon: <AiFillProject />,
-    logged: false
+    icon: <AiFillProject />
   },
   {
     title: 'Create Project',
     path: '/create-project',
     icon: <AiFillProject />,
-    logged: false
+    logged: true
   },
   {
     title: 'Sign In',
@@ -46,7 +46,7 @@ export const DrawerData = [
   },
   {
     title: 'Log out',
-    path: '/sign-in',
+    path: '/',
     icon: <GoSignOut />,
     logged: true,
   }

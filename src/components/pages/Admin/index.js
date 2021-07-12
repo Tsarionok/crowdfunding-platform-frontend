@@ -1,5 +1,9 @@
 import React from 'react';
-import Admin from './Admin';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAdminSections } from './admin-sections';
+import { getCities, getCountries, getCategories } from '../../../redux/actions';
+import { Tab } from '../..';
+import './admin.scss';
 
 const AdminPage = {
   path: '/admin-panel',
@@ -7,14 +11,29 @@ const AdminPage = {
 }
 
 function AdminContainer() {
-  const [state, setState] = React.useState({ activeTab: 'categories' })
+  const dispatch = useDispatch();
+  const { auth, category, city, country } = useSelector(state => state);
+
+  const [state, setState] = React.useState({ activeTab: 'categories' });
+
+  React.useEffect(() => {
+    if (!category || !city || !country) {
+      dispatch(getCategories());
+      dispatch(getCountries());
+      dispatch(getCities());
+    }
+  }, [dispatch]);
 
   const setActiveTab = React.useCallback((activeTab) => {
     setState(previousState => ({ ...previousState, activeTab }))
   }, []);
 
   return (
-    <Admin activeTab={state.activeTab} setActiveTab={setActiveTab} />
+    <Tab
+      activeTab={state.activeTab}
+      tabElements={getAdminSections({ categories: category, cities: city, countries: country })} 
+      setActiveTab={setActiveTab} 
+    />
   )
 }
 

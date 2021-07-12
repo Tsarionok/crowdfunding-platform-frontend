@@ -11,6 +11,7 @@ import {
   const initState = {
     user: null,
     isAuthenticated: null,
+    roles: null,
     token: localStorage.getItem('token'),
   };
   
@@ -47,8 +48,8 @@ import {
           ...state,
           isAuthenticated: false,
           token: null,
-          confirmation_status: 'sent',
           user: null,
+          roles: null
         };
       default:
         return state;

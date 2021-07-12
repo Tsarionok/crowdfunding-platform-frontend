@@ -13,6 +13,7 @@ function HeaderPresentational({
   isAuthenticated = false,
   location,
   isActive,
+  roles
 }) {
   return (
     <div>
@@ -33,7 +34,8 @@ function HeaderPresentational({
                   <AiOutlineClose style={{ zIndex: 5 }} />
                 </Link>
               </li>
-              {DrawerData.filter((item) => item.logged !== !isAuthenticated).map((item, index) => {
+              {DrawerData.filter(({ logged, forAdminAndEditor }) => (logged !== !isAuthenticated && !forAdminAndEditor) || (forAdminAndEditor && roles && (roles.includes("editor") || roles.includes("admin")))).map((item, index) => {
+
                 return (
                   <li
                     key={`${index} ${item.path}`}

@@ -6,5 +6,4 @@ export { default as SingleProject } from './SingleProject';
 export { default as Profile } from './Profile';
 export { default as CreateProject } from './CreateProject';
 export { default as Admin } from './Admin';
-export { default as Confirmation } from './Confirmation';
 export { default as DonateHistoryPage } from './DonateHistory';

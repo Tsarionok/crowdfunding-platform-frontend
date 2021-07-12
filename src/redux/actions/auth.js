@@ -34,7 +34,6 @@ export const loadUser = (id) => async (dispatch) => {
     } catch (err) {
       const errors = err && err.response && err.response.data && err.response.data.errors;
       if (errors) {
-        console.log(errors);
         dispatch(addErrors(errors));
       }
       dispatch({ 
@@ -47,13 +46,14 @@ export const loadUser = (id) => async (dispatch) => {
     const body = JSON.stringify({ email, password, rememberMe: true });
     try {
       const res = await axios.post('https://localhost:44334/api/Users/login', body, configContentType());
+      const { token, isAuthenticated, user, roles } = res.data;
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: { ...res.data, token: `Bearer ${res.data.token}` },
+        payload: { isAuthenticated, user, roles, token: `Bearer ${token}` },
       }); 
       dispatch(loadUser(res.data.id));
     } catch (err) {
-      const errors = err.response.data.errors;
+      const errors = err && err.response && err.response.data && err.response.data.errors;
       if (errors) {
         dispatch(addErrors(errors));
       }
