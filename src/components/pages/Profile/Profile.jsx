@@ -16,6 +16,7 @@ function Profile({
   onFieldChange,
   changingPassword,
   onChangePassword,
+  onUpdateProfile,
   oldPassword,
   newPassword,
   setChangingPassword
@@ -56,9 +57,7 @@ function Profile({
           <div className="ProfilePage__Form">
             { fields && fields.map((field) => (
               <div className="ProfilePage__InputWrapper" key={field.key}>
-                <input className="ProfilePage__Input" {...field} value={
-                  (currentUser && currentUser[field.name]) ? currentUser[field.name]: ''
-                  } onChange={onChangeFields} />
+                <input className="ProfilePage__Input" {...field} onChange={onChangeFields} />
               </div>
             )) }
             <div className="Center-Block">
@@ -88,7 +87,10 @@ function Profile({
               </label>
             </div>
           </div>
-          <Button variant="secondary" size="lg" active onClick={onSubmitForm}>
+          <Button variant="secondary" size="lg" active onClick={() => {
+            onSubmitForm();
+            onUpdateProfile();
+          }}>
             Submit
           </Button>
         </div>

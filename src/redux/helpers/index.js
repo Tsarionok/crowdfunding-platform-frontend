@@ -1,5 +1,4 @@
 import axios from 'axios';
-import jwt from 'jsonwebtoken';
 
 export const setAuthToken = (token) => {
   if (token) {

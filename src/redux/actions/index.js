@@ -1,4 +1,13 @@
-export { register, logout, login, loadUser, getCurrentUser, deleteUser, changePassword } from './auth';
+export { 
+    register, 
+    logout, 
+    login, 
+    loadUser, 
+    getCurrentUser, 
+    deleteUser, 
+    changePassword, 
+    updateUser 
+} from './auth';
 export { addError, addErrorAndDelete, addErrors, clearError } from './error';
 export { addSuccessStatus, removeSuccesses } from './success';
 export { addCity, removeCity, getCities } from './city';

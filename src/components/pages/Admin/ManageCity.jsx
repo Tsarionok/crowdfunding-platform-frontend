@@ -5,8 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { addCity, removeCity } from '../../../redux/actions';
 
 function ManageCity({ cities, countries }) {
-  console.log(cities, countries)
-
   const dispatch = useDispatch();
 
   const [state, setState] = React.useState({ inputValue: '', selectedCountry: '' });

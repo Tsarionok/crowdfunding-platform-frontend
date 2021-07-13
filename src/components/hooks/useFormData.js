@@ -2,7 +2,7 @@ import React from 'react';
 
 export const useFormData = (fields) => {
   const initialState = fields.reduce(
-    (p, c) => ({ ...p, [c.name]: { ...c, value: "" } }),
+    (p, c) => ({ ...p, [c.name]: { ...c } }),
     {}
   );
   const [state, setState] = React.useState(initialState);

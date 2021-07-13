@@ -97,6 +97,17 @@ export const loadUser = (id) => async (dispatch) => {
       }
   }
 
+  export const updateUser = (userData) => async (dispatch) => {
+    try {
+      const body = JSON.stringify(userData);
+      await axios.post('https://localhost:44334/api/Users/edit', body, configContentType());
+      if (userData.id)
+        dispatch(getCurrentUser(userData.id));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   export const logout = () => (dispatch) => {
     dispatch({
       type: CLEAR_PROFILE,

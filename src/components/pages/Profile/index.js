@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { useFormData } from '../../hooks';
-import { deleteUser, changePassword, getCurrentUser } from '../../../redux/actions';
+import { deleteUser, changePassword, getCurrentUser, updateUser } from '../../../redux/actions';
 import { ProfileFormData } from './Profile-helper';
 import Profile from './Profile';
 
@@ -23,7 +23,7 @@ function ProfileContainer() {
     oldPassword: '',
     newPassword: ''
   });
-  const formData = useFormData(ProfileFormData);
+  const formData = useFormData(ProfileFormData.map((obj) => (currentUser && currentUser[obj.name]) ? ({ ...obj, value: currentUser[obj.name] }) : obj ));
 
   const onAuthenticationToggle = React.useCallback(() => {
     setState(previousState => ({ ...previousState, switchEnabled: !previousState.switchEnabled }))
@@ -49,6 +49,10 @@ function ProfileContainer() {
     setState({ oldPassword: '', newPassword: '' });
   }, [dispatch, state, user, history]);
 
+  const onUpdateProfile = React.useCallback(() => {
+    //dispatch(updateUser({  }));
+  }, [dispatch, formData]);
+
   React.useEffect(() => {
     if (profileId)
       dispatch(getCurrentUser(profileId));
@@ -68,6 +72,7 @@ function ProfileContainer() {
           onFieldChange={onFieldChange}
           onChangePassword={onChangePassword}
           onDeleteUser={onDeleteUser}
+          onUpdateProfile={onUpdateProfile}
         />
       ) }
     </React.Fragment>
