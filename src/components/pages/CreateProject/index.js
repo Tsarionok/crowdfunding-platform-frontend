@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CreateProject from './CreateProject';
-import { getCategories } from '../../../redux/actions';
+import { getCategories, addProject } from '../../../redux/actions';
 
 const CreateProjectPage = {
   component: CreateProjectContainer,
-  path: '/create-project'
+  path: '/create-project',
+  auth: true,
+  isPrivate: true
 }
 
 function CreateProjectContainer() {
@@ -14,9 +16,10 @@ function CreateProjectContainer() {
   const { category } = useSelector(state => state);
 
   const [state, setState] = React.useState({ 
+    categoryId: 0,
     startDate: new Date(), 
-    endDate: '',
-    selectedCategory: '',
+    endDate: new Date(),
+    selectedCategory: (category && category[0]) ? category[0].name: '',
     projectName: '',
     description: '',
     totalDonationSum: ''
@@ -27,12 +30,16 @@ function CreateProjectContainer() {
   }, [dispatch]);
 
   const onSelectCategory = React.useCallback((e) => {
-    setState(previousState => ({ ...previousState, selectedCategory: e.target.value }));
-  }, []);
+    setState(previousState => ({ 
+      ...previousState, 
+      selectedCategory: e.target.value, 
+      categoryId: category ? category.find((category) => category.name === e.target.value).id: 0
+    }));
+  }, [category]);
 
 
-  const onChangeDate = React.useCallback((date) => {
-    setState(previousState => ({ ...previousState, endDate: date }));
+  const onChangeDate = React.useCallback((dateName, date) => {
+    setState(previousState => ({ ...previousState, [dateName]: date }));
   }, []);
 
   const onChangeInput = React.useCallback((e) => {
@@ -40,9 +47,22 @@ function CreateProjectContainer() {
   }, []);
 
   const onCreateProject = React.useCallback(() => {
-    console.log(state)
-    setState({ description: '', totalDonationSum: '', projectName: '' })
-  }, [state]);
+    dispatch(addProject({ 
+      name: state.projectName, 
+      categoryId: state.categoryId,
+      description: state.description,
+      mainPhoto: '',
+      startFundraisingDate: state.startDate.toISOString(),
+      finalFundraisingDate: state.endDate.toISOString(),
+      currentDonationSum: 0,
+      totalDonationSum: state.totalDonationSum
+    }));
+    setState({ description: '', totalDonationSum: '', projectName: '' });
+  }, [dispatch, state]);
+
+  const onPhotosChange = React.useCallback(() => {
+
+  }, []);
 
   return <CreateProject 
     {...state} 
@@ -51,6 +71,7 @@ function CreateProjectContainer() {
     onChangeDate={onChangeDate} 
     onChangeInput={onChangeInput}
     onCreateProject={onCreateProject}
+    onPhotosChange={onPhotosChange}
   />
 }
 

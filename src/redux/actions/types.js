@@ -1,6 +1,8 @@
 export const REGISTER_COMPLETE = 'REGISTER_COMPLETE';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const USER_LOADED = 'USER_LOADED';
+export const GET_CURRENT_USER ='GET_CURRENT_USER';
+export const REMOVE_USER = 'REMOVE_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

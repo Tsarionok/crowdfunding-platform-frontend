@@ -5,9 +5,8 @@ import { Provider } from 'react-redux';
 
 import { setAuthToken } from './redux/helpers';
 import store from './redux/store';
-import { loadUser } from './redux/actions';
 import * as Pages from './components/pages';
-import { Header } from './components';
+import { Header, PrivateRoute } from './components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
@@ -24,7 +23,11 @@ function App() {
             <div className="mu-block">
             <Switch>
               { Object.values(Pages)
-                        .map(({ path, component }) => <Route exact key={uuidv4()} path={path} component={component} />)
+                  .map((pageObj) => (
+                    pageObj.isPrivate ? 
+                    <PrivateRoute exact key={uuidv4()} {...pageObj} /> : 
+                    <Route exact key={uuidv4()} {...pageObj} />
+                  ))
               }
             </Switch>
           </div>

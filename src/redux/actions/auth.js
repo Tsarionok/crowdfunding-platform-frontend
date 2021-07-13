@@ -8,7 +8,9 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    CLEAR_PROFILE
+    CLEAR_PROFILE,
+    GET_CURRENT_USER,
+    REMOVE_USER
   } from './types';
 
 export const loadUser = (id) => async (dispatch) => {
@@ -62,6 +64,38 @@ export const loadUser = (id) => async (dispatch) => {
       });
     }
   };
+
+  export const getCurrentUser = (id) => async (dispatch) => {
+      try {
+        const res = await axios.get(`https://localhost:44334/api/Users/${id}`);
+        dispatch({
+            type: GET_CURRENT_USER,
+            payload: res.data
+        });   
+      } catch (err) {
+      }
+  }
+
+  export const deleteUser = (id) => async (dispatch) => {
+    try {
+        await axios.delete(`https://localhost:44334/api/Users/${id}`);
+        dispatch({
+            type: REMOVE_USER
+        });   
+      } catch (err) {
+        console.log(err);
+      }
+  }
+
+  export const changePassword = ({ id, newPassword, oldPassword }, history) => async (dispatch) => {
+    try {
+        const body = JSON.stringify({ id, newPassword, oldPassword });
+        await axios.post('https://localhost:44334/api/Users/change-password', body, configContentType());
+        history.push('/sign-in')
+      } catch (err) {
+        console.log(err);
+      }
+  }
 
   export const logout = () => (dispatch) => {
     dispatch({

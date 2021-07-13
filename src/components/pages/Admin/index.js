@@ -7,7 +7,10 @@ import './admin.scss';
 
 const AdminPage = {
   path: '/admin-panel',
-  component: AdminContainer
+  component: AdminContainer,
+  auth: true,
+  isPrivate: true,
+  accessFor: ['editor', 'admin']
 }
 
 function AdminContainer() {
@@ -17,11 +20,9 @@ function AdminContainer() {
   const [state, setState] = React.useState({ activeTab: 'categories' });
 
   React.useEffect(() => {
-    if (!category || !city || !country) {
       dispatch(getCategories());
       dispatch(getCountries());
       dispatch(getCities());
-    }
   }, [dispatch]);
 
   const setActiveTab = React.useCallback((activeTab) => {

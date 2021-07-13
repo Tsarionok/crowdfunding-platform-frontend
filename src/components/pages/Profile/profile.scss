@@ -1,4 +1,5 @@
 .ProfilePage__MainInfo {
+  font-size: 21px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +12,18 @@
   .ProfilePage__Avatar {
     height: 150px;
     width: 150px;
+  }
+}
+
+.ProfilePage__Delete-Button {
+  cursor: pointer;
+}
+
+.ProfilePage__ChangePasswordButtons {
+  display: flex;
+  margin-top: 10px;
+  & > * {
+    margin-right: 10px;
   }
 }
 

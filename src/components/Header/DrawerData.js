@@ -1,6 +1,14 @@
 import React from 'react';
+import jwt from 'jsonwebtoken';
 import { AiFillHome, AiOutlineForm, AiFillProject } from 'react-icons/ai';
 import { GoSignIn, GoSignOut } from 'react-icons/go';
+
+let profileId = 'me';
+
+if (localStorage.token) {
+  const { payload: { Id } } = jwt.decode(localStorage.getItem('token').slice(7), { complete: true });
+  profileId = Id;
+}
 
 export const DrawerData = [
   {
@@ -17,7 +25,7 @@ export const DrawerData = [
   },
   {
     title: 'Profile',
-    path: '/profiles/me',
+    path: `/profiles/${profileId}`,
     icon: <AiFillProject />,
     logged: true
   },

@@ -6,10 +6,13 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     CLEAR_PROFILE,
+    GET_CURRENT_USER,
+    REMOVE_USER
   } from '../actions/types';
   
   const initState = {
     user: null,
+    currentUser: null,
     isAuthenticated: null,
     roles: null,
     token: localStorage.getItem('token'),
@@ -25,6 +28,16 @@ import {
           isAuthenticated: true,
           user: payload,
         };
+      case REMOVE_USER:
+          return {
+              ...state,
+              user: null
+          }
+      case GET_CURRENT_USER:
+        return {
+            ...state,
+            currentUser: payload
+        }
       case LOGIN_SUCCESS:
         localStorage.setItem('token', payload.token);
         return {
@@ -49,6 +62,7 @@ import {
           isAuthenticated: false,
           token: null,
           user: null,
+          currentUser: null,
           roles: null
         };
       default:

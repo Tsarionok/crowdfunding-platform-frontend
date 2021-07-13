@@ -20,15 +20,5 @@ export const ProfileFormData = [
     placeholder: 'Phone',
     name: 'phone',
     type: 'tel'
-  },
-  {
-    placeholder: 'Password',
-    name: 'password',
-    type: 'password'
-  },
-  {
-    placeholder: 'Retype password',
-    name: 'retypedPassword',
-    type: 'password'
   }
 ].map((inputInfo) => ({ ...inputInfo, key: uuidv4() }))
